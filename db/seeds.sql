@@ -1,17 +1,17 @@
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Michael', 'Sott', 1, null);
+VALUES ('Carter', 'Nadain', 1, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Jim', 'Halpert', 2, 1);
+VALUES ('Joe', 'Fresh', 2, 1);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Dwight', 'Schrute', 2, 1);
+VALUES ('Honey', 'Doodle', 2, 1);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Pam', 'Beasley', 4, 1);
+VALUES ('Duke', 'Thedog', 4, 1);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Kevin', 'Malone', 3, 1);
+VALUES ('Fanny', 'Keefer', 3, 1);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Toby', 'Flannagan', 5, 2);
+VALUES ('Klay', 'Thompson', 5, 2);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Robert', 'California', 6, null);
+VALUES ('Steph', 'Curry', 6, null);
 
 INSERT INTO department (department_name)
 VALUES ('Management');
@@ -25,14 +25,14 @@ INSERT INTO department (department_name)
 VALUES ('Human Resources');
 
 INSERT INTO role (title, salary, department_id)
-VALUES ('General Manager', 120000, 1);
+VALUES ('General Manager', 125000, 1);
 INSERT INTO role (title, salary, department_id)
-VALUES ('Salesman', 80000, 2);
+VALUES ('Salesman', 75000, 2);
 INSERT INTO role (title, salary, department_id)
-VALUES ('Accountant', 90000, 4);
+VALUES ('Accountant', 100000, 4);
 INSERT INTO role (title, salary, department_id)
-VALUES ('Receptionist', 40000, 3);
+VALUES ('Receptionist', 50000, 3);
 INSERT INTO role (title, salary, department_id)
-VALUES ('Human Resource Officer', 75000, 5);
+VALUES ('Human Resource Officer', 80000, 5);
 INSERT INTO role (title, salary, department_id)
-VALUES ('CEO', 250000, null);
+VALUES ('CEO', 300000, null);
