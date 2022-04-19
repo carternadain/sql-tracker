@@ -1,6 +1,7 @@
 // const listed here
 const mysql = require('mysql2')
 const inquirer = require('inquirer');
+const { listenerCount } = require('mysql2/typings/mysql/lib/Connection');
 // const cTable = require('console.table');
 
 
@@ -19,7 +20,6 @@ console.log('Connected to database')
 
 table();
 
-
 // Main menu function 
 function table() {
     inquirer.prompt([
@@ -27,58 +27,19 @@ function table() {
             type: 'list',
             name: 'menu',
             choices:
-                ['View Data', 'Add Data', 'Update Employee Role', 'Exit Program'],
+                ['Add Employee','Add Role', 'Add Department', 'Exit Program'],
             description: 'What would you like to do?'
         },
     ]).then(res => {
         switch (res.table) {
-            case ('View Data'):
-                viewData();
+            case ('Add Employee'):
+                employeeQuestions();
                 break;
-            case ('Add Data'):
-                addInfo();
+            case ('Add Role'):
+                roleQuestions();
                 break;
-            case ('Update Employee Role'):
-                updateData();
-                break;
-            default:
-                console.log('Goodbye!');
-                process.exit();
-        }
-    })
-}
-
-//secondary menu function to view data
-function viewData() {
-    inquirer.prompt([
-        {
-            type: 'list',
-            name: 'selection',
-            choices: ['View All Departments', 'View All Roles', 'View All Employees'],
-            description: 'Which data would you like to view?'
-        },
-    ]).then(res => {
-        switch (res.selection) {
-            case ('View All Departments'):
-                db.query('SELECT * FROM department', (err, data) => {
-                    if (err) { throw err }
-                    else { console.table(data) }
-                    continueProgram();
-                });
-                break;
-            case ('View All Roles'):
-                db.query('SELECT * FROM roles', (err, data) => {
-                    if (err) { throw err }
-                    else { console.table(data) }
-                    continueProgram();
-                });
-                break;
-            case ('View All Employees'):
-                db.query('SELECT * FROM employee', (err, data) => {
-                    if (err) { throw err }
-                    else { console.table(data) }
-                    continueProgram();
-                });
+            case ('Add Department'):
+                departmentQuestions();
                 break;
             default:
                 console.log('Goodbye!');
@@ -87,52 +48,26 @@ function viewData() {
     })
 }
 
+function employeeQuestions () {
+    inquirer.prompt ([{
+        type: "input",
+        name: "firstName",
+        message: "What is the employees first name" 
 
-// secondary menu to add department / role / employee
-function addInfo() {
-    inquirer.prompt([
-        {
-            type: 'list',
-            name: 'selection',
-            choices: ['Add a Department', 'Add a Role', 'Add an Employee'],
-            description: 'What data would you like to add?'
-        },
-    ]).then(res => {
-        switch (res.selection) {
-            case ('Add a Department'):
-                addDept();
-                break;
-            case ('Add a Role'):
-                addRole();
-                break;
-            case ('Add an Employee'):
-                addEmployee();
-                break;
-            default:
-                console.log('Goodbye!');
-                process.exit();
-        }
-    })
+    },{
+        type: "input",
+        name: "lastName",
+        message: "What is the employees last name" 
 
+    }
+    
+    ]
+    )
 }
 
-//action to continue /exit 
-function continueProgram() {
 
-    inquirer.prompt(
-        {
-            type: 'list',
-            message: 'Would you like to continue?',
-            choices: ['Continue', 'Exit'],
-            name: 'continue'
-        }
-    ).then(res => {
-        var confirm = res.continue;
-        if (confirm === 'Continue') {
-            menu();
-        } else {
-            console.log('Goodbye!');
-            process.exit();
-        }
-    });
-};
+// query functions for mysql (employees,roles,deperatments)
+
+// function Employee() {
+//     const query =''
+// }
