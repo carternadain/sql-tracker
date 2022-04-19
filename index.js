@@ -1,7 +1,7 @@
 // const listed here
 const mysql = require('mysql2')
 const inquirer = require('inquirer');
-const { listenerCount } = require('mysql2/typings/mysql/lib/Connection');
+// const { listenerCount } = require('mysql2/typings/mysql/lib/Connection');
 // const cTable = require('console.table');
 
 
@@ -27,12 +27,15 @@ function table() {
             type: 'list',
             name: 'menu',
             choices:
-                ['Add Employee','Add Role', 'Add Department', 'Exit Program'],
+                ['Add Employee Role','View All Roles','Add Role', 'Add Department', 'Exit Program'],
             description: 'What would you like to do?'
         },
     ]).then(res => {
         switch (res.table) {
-            case ('Add Employee'):
+            case ('Add Employee Role'):
+                employeeQuestions();
+                break;
+            case ('View All Roles'):
                 employeeQuestions();
                 break;
             case ('Add Role'):
