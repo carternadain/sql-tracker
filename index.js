@@ -52,18 +52,78 @@ function employeeQuestions () {
     inquirer.prompt ([{
         type: "input",
         name: "firstName",
-        message: "What is the employees first name" 
+        message: "What is the employees first name?" 
 
-    },{
+    }, 
+    {
         type: "input",
         name: "lastName",
-        message: "What is the employees last name" 
-
-    }
+        message: "What is the employees last name?" 
     
+    },
+    {
+        type: "input",
+        name: "employeeRole",
+        message: "What is the employees role?" 
+
+    },
+    {
+        type: "input",
+        name: "employeeManger",
+        message: "who is the employees manger?" 
+    }
     ]
     )
 }
+
+function roleQuestions () {
+    inquirer.prompt ([{
+        type: "input",
+        name: "roleName",
+        message: "What is the name of the role?" 
+
+    }, 
+    {
+        type: "input",
+        name: "salary",
+        message: "What is the salary of the role?" 
+    },
+    {
+        type: "input",
+        name: "departmentRole",
+        message: "What department does the role belong to?" 
+    }
+    ]
+    )
+}
+
+
+function departmentQuestions () {
+    inquirer.prompt ([{
+        type: "input",
+        name: "roleName",
+        message: "What is the name of the department ?" 
+
+    }, 
+    {
+        type: "input",
+        name: "salary",
+        message: "What is the salary of the role?" 
+    },
+    {
+        type: "input",
+        name: "departmentRole",
+        message: "What department does the role belong to?" 
+    }
+    ]
+    )
+}
+
+
+
+
+
+
 
 
 // query functions for mysql (employees,roles,deperatments)
