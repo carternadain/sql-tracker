@@ -1,7 +1,7 @@
 // const listed here
 const mysql = require('mysql2')
 const inquirer = require('inquirer');
-// const { listenerCount } = require('mysql2/typings/mysql/lib/Connection');
+// const { listenerCount } = require('mysql2/db/Connection');
 // const cTable = require('console.table');
 
 
@@ -27,20 +27,31 @@ function table() {
             type: 'list',
             name: 'menu',
             choices:
-                ['Add Employee Role','View All Roles','Add Role', 'Add Department', 'Exit Program'],
+                ['View All Employees','Add Employee','Update Employee Role','View All Roles'
+                ,'Add Role','View All Departments','Add Department', 'Exit Program'],
             description: 'What would you like to do?'
         },
+
     ]).then(res => {
         switch (res.table) {
-            case ('Add Employee Role'):
+            case ('View All Employees'):
+                viewEmployees();
+                break; 
+            case ('Add Employee'):
+                employeeQuestions();
+                break;
+            case ('Update Employee Role'):
                 employeeQuestions();
                 break;
             case ('View All Roles'):
-                employeeQuestions();
+                viewRoles();
                 break;
             case ('Add Role'):
                 roleQuestions();
                 break;
+            case ('View All Departments'):
+                    viewDepartment();
+                    break;
             case ('Add Department'):
                 departmentQuestions();
                 break;
@@ -50,6 +61,21 @@ function table() {
         }
     })
 }
+    
+
+function viewEmployees () {
+    inquirer.prompt ([ 
+    {
+        type: "list",
+        name: "viewEmployees",
+        choices: ['Carter Nadain', 'Joe Fresh', 'Honey Doodle', 
+        'Duke Thedog', 'Fanny Keefer','Klay Thompson','Steph Curry']
+    },
+    ]
+    )
+}
+
+
 
 function employeeQuestions () {
     inquirer.prompt ([{
@@ -79,6 +105,20 @@ function employeeQuestions () {
     )
 }
 
+
+function viewRoles () {
+    inquirer.prompt ([ 
+    {
+        type: "list",
+        name: "viewRoles",
+        choices: ['General Manager', 'Salesmen', 'Accountant', 
+        'Receptionist', 'Human Resources','Receptionist','CEO']
+    },
+    ]
+    )
+}
+
+
 function roleQuestions () {
     inquirer.prompt ([{
         type: "input",
@@ -99,6 +139,19 @@ function roleQuestions () {
     ]
     )
 }
+
+function viewDepartment () {
+    inquirer.prompt ([ 
+    {
+        type: "list",
+        name: "viewDepartment",
+        choices: ['Management', 'Sales', 'Accounting', 
+        'Reception', 'Human Resource']
+    },
+    ]
+    )
+}
+
 
 
 function departmentQuestions () {
