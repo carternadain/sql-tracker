@@ -15,7 +15,7 @@ This repository A SQL database that tracks employees, their roles, and their res
 # installation
 * npm i - to install all file in order for npm to work
 
-* npm i inquirer - to use inquirer (to interact with the 3.user via command line)
+* npm i inquirer - to use inquirer 
 
 * npm init - to create a json file
 
