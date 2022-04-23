@@ -9,7 +9,7 @@ This repository A SQL database that tracks employees, their roles, and their res
 
 
 # Screenshot of application in use
-![Screen Shot of the App in use](/assets/images/front-page.png)
+![Screen Shot of the App in use](/assets/images/pic.png)
 
 
 # installation
