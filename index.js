@@ -1,7 +1,7 @@
 // const listed here
 const mysql = require('mysql2')
 const inquirer = require('inquirer');
-const Connection = require('mysql/lib/Connection');
+// const Connection = require('mysql/lib/Connection');
 // const cTable = require('console.table')
 
 
@@ -180,14 +180,14 @@ function employeeRoleUpdate() {
 }
 
 function viewRoles() {
-    db.query(
-        `SELECT role.id AS 'ID', role.title AS 'Job Title', role.salary AS 'Salary', department.name AS 'Department' FROM role LEFT JOIN department on role.department_id = department.id`,
-        (err, res) => {
-            console.table(res)
-            tableMenu()
-        }
-    )
-}
+     db.query('SELECT * FROM role', (err, data) => {
+            if (err) throw err;
+            console.log('Showing all roles:');
+            console.table(data);
+            tableMenu();
+        });
+    }
+   
 
 
 function addRole() {
@@ -229,15 +229,15 @@ function addRole() {
     })
 }
 
+
 function viewDepartment() {
-    db.query(
-        `SELECT department.id AS 'ID', department.name AS 'Department Name' FROM department`,
-        (err, res) => {
-            console.table(res)
-            tableMenu()
-        }
-    )
-}
+    db.query('SELECT * FROM department', (err, data) => {
+           if (err) throw err;
+           console.log('Showing all departments:');
+           console.table(data);
+           tableMenu();
+       });
+   }
 
 
 function departmentQuestions() {
