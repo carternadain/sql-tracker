@@ -1,7 +1,8 @@
 // const listed here
 const mysql = require('mysql2')
 const inquirer = require('inquirer');
-
+const Connection = require('mysql/lib/Connection');
+// const cTable = require('console.table')
 
 
 // sql connection
@@ -11,27 +12,30 @@ const db = mysql.createConnection({
   user: 'root',
   // Your MySQL password
   password: '',
-  database: 'election'
-},
-console.log('Connected to database')
+  database: 'employee_DB'
 
-);
+},);
 
+db.connect((err) => {
+    if (err) throw err;
+    console.log('connection succesful!')
+});
 
 // Main menu function 
 function tableMenu() {
-    inquirer.prompt([
-        {
+    inquirer.prompt({
+        
             type: 'list',
-            name: 'menu',
+            name: 'table',
+            description: 'What would you like to do?',
             choices:
                 ['View All Employees','Add Employee','Update Employee Role','View All Roles'
                 ,'Add Role','View All Departments','Add Department', 'Exit Program'],
-            description: 'What would you like to do?'
-        },
-
-
-    ]).then(res => {
+           
+        
+    })
+    
+    .then(res => {
         switch (res.table) {
             case ('View All Employees'):
                 viewEmployees();
@@ -54,27 +58,22 @@ function tableMenu() {
             case ('Add Department'):
                 departmentQuestions();
                 break;
-            default:
-                console.log('Goodbye!');
+            default: ('Exit');
+                console.log ('Program Ended')
                 process.exit();
+                
         }
     })
 }
     
 function viewEmployees() {
-    db.query(
-        `SELECT employee.id AS 'ID', employee.first_name AS 'First Name', 
-        employee.last_name AS 'Last Name', role.title AS 'Title', 
-        department.name AS 'Department', role.salary as Salary, 
-        CONCAT(manager.first_name, ' ', manager.last_name) AS 'Manager' 
-        from employee LEFT JOIN role on employee.role_id = role.id 
-        LEFT JOIN department ON role.department_id = department.id 
-        LEFT JOIN employee manager on manager.id = employee.manager_id`,
-        (err, res) => {
-            console.table(res)
-            tableMenu()
-        }
-    )
+    db.query
+        ('SELECT * FROM employee', (err,data) => {
+            if (err) throw err;
+            console.log('showing all employees:');
+            console.table(data);
+            tableMenu();
+    });
 }
 
 
@@ -224,7 +223,7 @@ function addRole() {
                 [res.roleTitle, res.roleSalary, res.roleDepartment],
                 (err, res) => {
                     console.log('Approved!  Added the role to the database.')
-                    table()
+                    tableMenu()
                 })
         })
     })
@@ -259,7 +258,4 @@ function departmentQuestions() {
     })
 }
 
-
-
 tableMenu();
-

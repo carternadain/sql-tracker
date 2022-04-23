@@ -1,3 +1,6 @@
+USE employee_DB;
+
+
 INSERT INTO department (id, department_name)
 VALUES (1, 'Management'),
  (2, 'Sales'),
