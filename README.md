@@ -5,6 +5,8 @@
 # Description 
 This repository A SQL database that tracks employees, their roles, and their respective department.
 
+# Technology 
+`Javascript` , `sql` , `Schema` , `Node` , `Npm packages`, `inquirer`
 
 
 
